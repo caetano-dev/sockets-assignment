@@ -1,7 +1,7 @@
 import socket
 
 HOST = '127.0.0.1'  # Endereco IP do Servidor
-PORT = 5300            # Porta que o Servidor esta
+PORT = 5301            # Porta que o Servidor esta
 
 udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
