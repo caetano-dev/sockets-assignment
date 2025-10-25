@@ -13,14 +13,17 @@ palavras = {
     'rede': {'en': 'network', 'es': 'red'},
     'roteador': {'en': 'router', 'es': 'enrutador'},
     'comutador': {'en': 'switch', 'es': 'conmutador'},
-    'conexão': {'en': 'connection', 'es': 'conexión'},
-    'congestionamento': {'en': 'congestion', 'es': 'congestión'},
+    'conexao': {'en': 'connection', 'es': 'conexion'},
+    'congestionamento': {'en': 'congestion', 'es': 'congestion'},
     'pacote': {'en': 'packet', 'es': 'paquete'},
-    'latência': {'en': 'latency', 'es': 'latencia'},
-    'propagação': {'en': 'propagation', 'es': 'propagación'},
+    'latencia': {'en': 'latency', 'es': 'latencia'},
+    'propagacao': {'en': 'propagation', 'es': 'propagacion'},
     'privacidade': {'en': 'privacy', 'es': 'privacidad'},
     'criptografia': {'en': 'encryption', 'es': 'cifrado'}
 }
+
+def listar_palavras():
+    return ', '.join(palavras.keys())
 
 while True:
     message, clientAddress = udp.recvfrom(2048)
@@ -30,7 +33,11 @@ while True:
     except ValueError:
         palavra, idioma = None, None
 
-    resposta = "Palavra nao encontrada.\nO formato da mensagem deve ser 'palavra:en/es'.\nAs palavras disponiveis são: " + ', '.join(palavras.keys())
+    resposta = (
+        "Palavra nao encontrada. "
+        "O formato da mensagem deve ser 'palavra:en/es'. "
+        "As palavras disponiveis sao: " + listar_palavras()
+    )
 
     if palavra in palavras and idioma in palavras[palavra]:
         resposta = palavras[palavra][idioma]
